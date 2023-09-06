@@ -8286,7 +8286,7 @@ class basic_json
             while (x != 0 and i < m_buf.size() - 1)
             {
                 const auto digit = std::labs(static_cast<long>(x % 10));
-                m_buf[i++] = static_cast<char>('0' + digit);
+                m_buf[++i] = static_cast<char>('0' + digit);
                 x /= 10;
             }
 
@@ -8297,7 +8297,7 @@ class basic_json
             {
                 // make sure there is capacity for the '-'
                 assert(i < m_buf.size() - 2);
-                m_buf[i++] = '-';
+                m_buf[++i] = '-';
             }
 
             std::reverse(m_buf.begin(), m_buf.begin() + i);
@@ -8312,10 +8312,10 @@ class basic_json
                 size_t i = 0;
                 if (std::signbit(x))
                 {
-                    m_buf[i++] = '-';
+                    m_buf[++i] = '-';
                 }
-                m_buf[i++] = '0';
-                m_buf[i++] = '.';
+                m_buf[++i] = '0';
+                m_buf[++i] = '.';
                 m_buf[i] = '0';
                 return;
             }
